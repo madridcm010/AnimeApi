@@ -1,0 +1,1 @@
+RESTful Api for anime shows I used ASP .NET 8 to make a RESTful Api that can use CRUD techniques to Create,Read,Update and Delete data from a SQL database. Each anime has its own ID,Name,Author,and animation studio associated with it Using Data Tranfer Objects to hide the ID from the user when needed and also making it more secure.
