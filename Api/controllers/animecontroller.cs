@@ -39,5 +39,21 @@ namespace Api.controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetbyId), new{id = animemodel.Id}, animemodel.ToAnimeDto());
         }
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id,[FromBody] UpdateAnimeRequestDto updateDto){
+            var animemodel = _context.Anime.FirstorDefault(x=> x.Id == id);
+
+            if(animemodel == null){
+                return NotFound();
+            }
+            animemodel.Id = updateDto.Id;
+            animemodel.Name = updateDto.Name;
+            animemodel.Author = updateDto.Author;
+            animemodel.AniCompany = updateDto.AniCompany;
+            animemodel.Genre = updateDto.Genre;
+            _context.SaveChanges();
+            return Ok(animemodel.ToAnimeDto());   
+        }
     }
 }
