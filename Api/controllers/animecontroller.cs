@@ -6,6 +6,7 @@ using Api.data;
 using Api.Dtos.Anime;
 using Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.controllers
 {
@@ -20,13 +21,13 @@ namespace Api.controllers
         [HttpGet]
         public async Task<IActionResult> GetAll(){
             var anime = await _context.Anime.ToListAsync();
-            var animeDto = Anime.Select(s => s.ToAnimeDto());
-            return Ok(anime);
+            var animeDto = anime.Select(s => s.ToAnimeDto());
+            return Ok(animeDto);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId([FromRoute]int id){
-            var anime = await_context.Anime.FindAsync(id);
+            var anime = await _context.Anime.FindAsync(id);
             if(anime == null){
                 return NotFound();
             }
