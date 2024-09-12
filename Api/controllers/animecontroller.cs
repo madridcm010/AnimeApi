@@ -7,7 +7,7 @@ using Api.Dtos.Anime;
 using Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using Api.Interfaces;
 namespace Api.controllers
 {
     [Route("api/anime")]    
