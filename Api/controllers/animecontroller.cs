@@ -14,13 +14,15 @@ namespace Api.controllers
     public class Animecontroller : ControllerBase
     {
         private readonly ApplicationDBContext _context;
-        public Animecontroller(ApplicationDBContext context)
+        private readonly IAnimeRepository _animeRepo;
+        public Animecontroller(ApplicationDBContext context, IAnimeRepository animeRepo)
         {
+            _animeRepo = animeRepo;
             _context = context;
         }    
         [HttpGet]
         public async Task<IActionResult> GetAll(){
-            var anime = await _context.Anime.ToListAsync();
+            var anime = await _animeRepo.GetAllAsync();
             var animeDto = anime.Select(s => s.ToAnimeDto());
             return Ok(animeDto);
         }
