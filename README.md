@@ -58,9 +58,9 @@ DTOs are used to control which fields are exposed to the client, improving secur
    cd AnimeApi/Api
 Update the connection string in appsettings.json to match your SQL Server configuration.
 
-###Run database migrations:
-  dotnet ef database update
+### Run database migrations:
+  - dotnet ef database update
 
-###Launch the API:
-  dotnet run
-Access Swagger UI at http://localhost:5000/swagger to explore and test the endpoints.
+### Launch the API:
+  - dotnet run
+- Access Swagger UI at http://localhost:5000/swagger to explore and test the endpoints.
